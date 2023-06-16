@@ -1,21 +1,9 @@
 
-    IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'ltbl_Import_NoakaRest_RevisionFiles' AND COLUMN_NAME = 'INTEGR_REC_GROUPREF')
+    IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'ltbl_Import_SourceSytem_Entity' AND COLUMN_NAME = 'objectID')
     BEGIN
-        ALTER TABLE ltbl_Import_NoakaRest_RevisionFiles ADD [INTEGR_REC_GROUPREF] uniqueidentifier NULL;
+        ALTER TABLE ltbl_Import_SourceSytem_Entity ADD [objectID] nvarchar(max) NULL;
     END;
-    IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'ltbl_Import_NoakaRest_RevisionFiles' AND COLUMN_NAME = 'INTEGR_REC_BATCHREF')
+    IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'ltbl_Import_SourceSytem_Entity' AND COLUMN_NAME = 'objectType')
     BEGIN
-        ALTER TABLE ltbl_Import_NoakaRest_RevisionFiles ADD [INTEGR_REC_BATCHREF] uniqueidentifier NULL;
-    END;
-    IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'ltbl_Import_NoakaRest_RevisionFiles' AND COLUMN_NAME = 'INTEGR_REC_STATUS')
-    BEGIN
-        ALTER TABLE ltbl_Import_NoakaRest_RevisionFiles ADD [INTEGR_REC_STATUS] nvarchar(50) NULL;
-    END;
-    IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'ltbl_Import_NoakaRest_RevisionFiles' AND COLUMN_NAME = 'INTEGR_REC_ERROR')
-    BEGIN
-        ALTER TABLE ltbl_Import_NoakaRest_RevisionFiles ADD [INTEGR_REC_ERROR] nvarchar(max) NULL;
-    END;
-    IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'ltbl_Import_NoakaRest_RevisionFiles' AND COLUMN_NAME = 'INTEGR_REC_TRACE')
-    BEGIN
-        ALTER TABLE ltbl_Import_NoakaRest_RevisionFiles ADD [INTEGR_REC_TRACE] nvarchar(max) NULL;
+        ALTER TABLE ltbl_Import_SourceSytem_Entity ADD [objectType] nvarchar(max) NULL;
     END;

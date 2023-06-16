@@ -1,32 +1,18 @@
 const fs = require('fs')
 
-const table_name = 'ltbl_Import_NoakaRest_RevisionFiles'
+process.argv.forEach(function (val, index) {
+    console.log(index + ': ' + val);
+  });
 
-const columns = [
-    {
-        "name": "INTEGR_REC_GROUPREF",
-        "type": "uniqueidentifier"
-    },
-    {
-        "name": "INTEGR_REC_BATCHREF",
-        "type": "uniqueidentifier"
-    },
-    {
-        "name": "INTEGR_REC_STATUS",
-        "type": "nvarchar",
-        "length": "50"
-    },
-    {
-        "name": "INTEGR_REC_ERROR",
-        "type": "nvarchar",
-        "length": "max"
-    },
-    {
-        "name": "INTEGR_REC_TRACE",
-        "type": "nvarchar",
-        "length": "max"
-    }
-]
+const [nodeEngine, thisScript, sourceJsonPathArgument, sinkSqlPathArgument] = process.argv
+
+sourceFile = sourceJsonPathArgument || './TableColumns.json'
+sinkFile = sinkSqlPathArgument || './AlignDataModel.sql'
+
+const tableColumns = JSON.parse(fs.readFileSync(sourceFile))
+
+const table_name = tableColumns.name
+const columns = tableColumns.columns
 
 const getType = (column) =>
 {
@@ -49,4 +35,4 @@ columns.forEach(column =>
     END;`
 })
 
-fs.writeFileSync('./AlignDataModel.sql', output)
+fs.writeFileSync(sinkFile, output)

@@ -1,0 +1,11 @@
+{
+    "name": "ltbl_Import_SourceSytem_Entity",
+    "columns": [
+        {
+            "name": "objectID"
+        },
+        {
+            "name": "objectType"
+        }
+    ]
+}
