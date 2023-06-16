@@ -1,12 +1,8 @@
 const fs = require('fs')
 
-process.argv.forEach(function (val, index) {
-    console.log(index + ': ' + val);
-  });
-
 const [nodeEngine, thisScript, sourceJsonPathArgument, sinkSqlPathArgument] = process.argv
 
-sourceFile = sourceJsonPathArgument || './TableColumns.json'
+sourceFile = sourceJsonPathArgument || './SampleTableColumns.json'
 sinkFile = sinkSqlPathArgument || './AlignDataModel.sql'
 
 const tableColumns = JSON.parse(fs.readFileSync(sourceFile))

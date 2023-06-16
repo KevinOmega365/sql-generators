@@ -2,10 +2,17 @@
     "name": "ltbl_Import_SourceSytem_Entity",
     "columns": [
         {
-            "name": "objectID"
+            "name": "objectID",
+            "type": "int"
         },
         {
-            "name": "objectType"
+            "name": "objectType",
+            "type": "nvarchar",
+            "length": 50
+        },
+        {
+            "name": "objectDesc",
+            "type": "nvarchar"
         }
     ]
 }
