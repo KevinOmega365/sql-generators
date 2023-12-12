@@ -1,0 +1,13 @@
+{
+  "name": "jsontosql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "gen": "node main.js"
+  },
+  "keywords": [],
+  "author": "kevinfjbecker",
+  "license": "MIT",
+  "type": "module"
+}
