@@ -33,7 +33,7 @@ const procedureTop = (namespace) =>
 
 ////////////////////////////////////////////////////////////////////////////////
 
-const unpackStatement = (namespace) => (columnDefinitions) =>
+const unpackStatement = (columnDefinitions) =>
 {
     const {
         destinationTable,
@@ -83,15 +83,11 @@ const unpackStatement = (namespace) => (columnDefinitions) =>
 
 export const generateTransformProcedure = (namespace, tablesColumns) => {
     return [
-        [
-            procedureTop(namespace),
-            bigBanner('Unpack JSON', tab(2)),
-            '',
-        ],
-        tablesColumns.map(unpackStatement(namespace)),
-        [
-            'END'
-        ]
+        procedureTop(namespace),
+        bigBanner('Unpack JSON', tab(2)),
+        '',
+        tablesColumns.map(unpackStatement),
+        'END'
     ]
         .flat()
         .join('\n')

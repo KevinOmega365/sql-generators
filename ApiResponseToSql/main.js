@@ -4,6 +4,7 @@ import { getColumnNames } from './src/GetColumnNames.js'
 import { getColumnTypes } from './src/GetColumnTypes.js'
 import { getJsonPaths } from './src/GetJsonPaths.js'
 import { generateTransformProcedure } from './src/GenerateTransformProcedure.js'
+import { generateAlignDataModelProcedure } from './src/GenerateAlignDataModelProcedure.js'
 
 const config = JSON.parse(fs.readFileSync('./config.json'))
 
@@ -54,6 +55,13 @@ for(const endPointConfiguration of config.endpointConfigurations)
 fs.writeFileSync(
     `./output/lstp_Import_${importNamespace}_Transform.sql`,
     generateTransformProcedure(importNamespace, allTablesAndColumns)
+)
+
+////////////////////////////////////////////////////////////////////////////////
+
+fs.writeFileSync(
+    `./output/lstp_Import_${importNamespace}_AlignDataModel.sql`,
+    generateAlignDataModelProcedure(importNamespace, allTablesAndColumns)
 )
 
 ////////////////////////////////////////////////////////////////////////////////
