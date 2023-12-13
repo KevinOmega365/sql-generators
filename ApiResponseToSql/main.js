@@ -3,32 +3,59 @@ import { getValueByJsonPath } from './src/GetValueByJsonPath.js'
 import { getColumnNames } from './src/GetColumnNames.js'
 import { getColumnTypes } from './src/GetColumnTypes.js'
 import { getJsonPaths } from './src/GetJsonPaths.js'
+import { generateTransformProcedure } from './src/GenerateTransformProcedure.js'
 
 const config = JSON.parse(fs.readFileSync('./config.json'))
 
-const {
-    sampleDataJsonFilePath,
-    dataRootPath,
-    destinationTable,
-    rawImportTable,
-    entityName
-} = config[0]
+const allTablesAndColumns = []
 
-const sampleData = JSON.parse(fs.readFileSync(sampleDataJsonFilePath))
+const importNamespace = config.importNamespace
 
-const model = getValueByJsonPath(sampleData, dataRootPath)
+for(const endPointConfiguration of config.endpointConfigurations)
+{
+    const {
+        sampleDataJsonFilePath,
+        dataRootPath,
+        destinationTable,
+        rawImportTable,
+        entityName
+    } = endPointConfiguration
 
-const columnNames = getColumnNames(model)
-const columnTypes = getColumnTypes(model)
-const columnDataPaths = getJsonPaths(model)
+    const sampleData = JSON.parse(fs.readFileSync(sampleDataJsonFilePath))
+    
+    const model = getValueByJsonPath(sampleData, dataRootPath)
+    
+    const columnNames = getColumnNames(model)
+    const columnTypes = getColumnTypes(model)
+    const columnDataPaths = getJsonPaths(model)
+    
+    const tableColumns = {
+        destinationTable,
+        rawImportTable,
+        entityName,
+        columns: columnNames.map((name, i) =>
+        ({
+            name,
+            type: columnTypes[i],
+            path: columnDataPaths[i]
+        }))
+    }
 
-const tableColumns = {
-    name: destinationTable,
-    columns: columnNames.map((name, i) =>
-    ({
-        name,
-        type: columnTypes[i],
-        path: columnDataPaths[i]
-    }))
+    fs.writeFileSync(
+        `./output/${entityName}TableColumns.json`,
+        JSON.stringify(tableColumns, null, 4)
+    )
+
+    allTablesAndColumns.push(tableColumns)
 }
-console.log(tableColumns)
+
+////////////////////////////////////////////////////////////////////////////////
+
+fs.writeFileSync(
+    `./output/lstp_Import_${importNamespace}_Transform.sql`,
+    generateTransformProcedure(importNamespace, allTablesAndColumns)
+)
+
+////////////////////////////////////////////////////////////////////////////////
+
+console.log('Ok.')
