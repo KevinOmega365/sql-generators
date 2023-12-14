@@ -24,7 +24,7 @@ for(const endPointConfiguration of config.endpointConfigurations)
 
     const sampleData = JSON.parse(fs.readFileSync(sampleDataJsonFilePath))
     
-    const model = getValueByJsonPath(sampleData, dataRootPath)
+    const model = getValueByJsonPath(sampleData, dataRootPath + '[0]')
     
     const columnNames = getColumnNames(model)
     const columnTypes = getColumnTypes(model)
@@ -34,6 +34,7 @@ for(const endPointConfiguration of config.endpointConfigurations)
         destinationTable,
         rawImportTable,
         entityName,
+        dataRootPath,
         columns: columnNames.map((name, i) =>
         ({
             name,

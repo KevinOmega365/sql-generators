@@ -3,21 +3,21 @@
     "endpointConfigurations": [
         {
             "sampleDataJsonFilePath": "./data/DocumentsYggdrasil.json",
-            "dataRootPath": "$.data[0]",
+            "dataRootPath": "$.data",
             "destinationTable": "ltbl_Import_DTS_DCS_Documents",
             "rawImportTable": "ltbl_Import_DTS_DCS_Documents_RAW",
             "entityName": "Documents"
         },
         {
             "sampleDataJsonFilePath": "./data/DocRevisionsYggdrasil.json",
-            "dataRootPath": "$.data[0]",
+            "dataRootPath": "$.data",
             "destinationTable": "ltbl_Import_DTS_DCS_Revisions",
             "rawImportTable": "ltbl_Import_DTS_DCS_Revisions_RAW",
             "entityName": "Revisions"
         },
         {
             "sampleDataJsonFilePath": "./data/DocRevFilesYggdrasil.json",
-            "dataRootPath": "$.data.objects[0]",
+            "dataRootPath": "$.data.objects",
             "destinationTable": "ltbl_Import_DTS_DCS_RevisionsFiles",
             "rawImportTable": "ltbl_Import_DTS_DCS_RevisionsFiles_RAW",
             "entityName": "RevisionsFiles"

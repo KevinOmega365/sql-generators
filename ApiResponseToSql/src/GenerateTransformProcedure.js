@@ -39,6 +39,7 @@ const unpackStatement = (columnDefinitions) =>
         destinationTable,
         rawImportTable,
         entityName,
+        dataRootPath,
         columns
     } = columnDefinitions
 
@@ -69,7 +70,7 @@ const unpackStatement = (columnDefinitions) =>
             `${tab(1)}INTEGR_REC_TRACE`,
             'FROM',
             `${tab(1)}dbo.${rawImportTable} with (nolock)`,
-            `${tab(1)}CROSS APPLY OPENJSON(JSON_DATA, '$.data')`,
+            `${tab(1)}CROSS APPLY OPENJSON(JSON_DATA, '${dataRootPath}')`,
             'WHERE',
             `${tab(1)}INTEGR_REC_BATCHREF = @BatchRef`,
         ].map(tabIn(2)),
