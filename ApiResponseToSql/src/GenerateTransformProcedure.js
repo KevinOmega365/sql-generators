@@ -38,7 +38,6 @@ const unpackStatement = (columnDefinitions) =>
     const {
         destinationTable,
         rawImportTable,
-        dataRootPath,
         entityName,
         dataRootPath,
         columns
