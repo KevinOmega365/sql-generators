@@ -49,7 +49,9 @@ const unpackStatement = (columnDefinitions) =>
             `INSERT INTO dbo.${destinationTable}`,
             '(',
         ].map(tabIn(1)),
-        columns.map(c => c.name + ',').map(tabIn(2)),
+        columns
+            .map(c => c.name + ',')
+            .map(tabIn(2)),
         [
             `${tab(1)}JsonRow,`,
             `${tab(1)}INTEGR_REC_BATCHREF,`,
