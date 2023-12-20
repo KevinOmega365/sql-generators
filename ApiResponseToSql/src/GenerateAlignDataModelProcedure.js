@@ -41,20 +41,3 @@ export const generateAlignDataModelProcedure = (importNamespace, tablesColumns) 
         .flat()
         .join('\n')
 }
-
-
-/*
-    return [
-        [
-            procedureTop(namespace),
-            bigBanner('Unpack JSON', tab(2)),
-            '',
-        ],
-        tablesColumns.map(unpackStatement(namespace)),
-        [
-            'END'
-        ]
-    ]
-        .flat()
-        .join('\n')
-*/

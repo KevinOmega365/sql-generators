@@ -24,7 +24,7 @@ for(const endPointConfiguration of config.endpointConfigurations)
 
     const sampleData = JSON.parse(fs.readFileSync(sampleDataJsonFilePath))
     
-    const model = getValueByJsonPath(sampleData, dataRootPath)
+    const model = getValueByJsonPath(sampleData, dataRootPath + '[0]') // take the first example
     
     const columnNames = getColumnNames(model)
     const columnTypes = getColumnTypes(model)
@@ -37,6 +37,7 @@ for(const endPointConfiguration of config.endpointConfigurations)
         columns: columnNames.map((name, i) =>
         ({
             name,
+            dataRootPath,
             type: columnTypes[i],
             path: columnDataPaths[i]
         }))
