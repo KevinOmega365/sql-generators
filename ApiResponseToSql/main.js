@@ -34,6 +34,7 @@ for(const endPointConfiguration of config.endpointConfigurations)
         destinationTable,
         rawImportTable,
         entityName,
+        dataRootPath,
         columns: columnNames.map((name, i) =>
         ({
             name,
