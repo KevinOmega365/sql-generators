@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { banner, bigBanner, tab } from './lib/TextBannersAndTabs.js'
+import { banner, bigBanner, placeholderEndBanner, placeholderStartBanner, tab } from './lib/TextBannersAndTabs.js'
 
 const getUpdateStatement = (tableName, columnName) =>
     // significant whitespace
@@ -22,10 +22,13 @@ for(const table of tablesAndColumns)
 {
     output += banner(table.entityName, tab(1)) + '\n\n'
 
+    
     for(const columnName of table.columns)
     {
-        output += banner(columnName, tab(1))
-        output += getUpdateStatement(table.name, columnName) + '\n\n'
+        output += banner(columnName, tab(1)) + '\n'
+        output += placeholderStartBanner(tab(1))
+        output += getUpdateStatement(table.name, columnName) + '\n'
+        output += placeholderEndBanner(tab(1)) + '\n\n'
     }
 }
 
