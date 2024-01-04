@@ -1,0 +1,13 @@
+{
+  "name": "columntransformplaceholders",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "gen": "node main.js"
+  },
+  "keywords": [],
+  "author": "kevinfjbecker",
+  "license": "MIT",
+  "type": "module",
+  "description": ""
+}
