@@ -2,22 +2,22 @@
     "importNamespace": "DTS_DCS",
     "endpointConfigurations": [
         {
-            "sampleDataJsonFilePath": "./data/DocumentsYggdrasil.json",
+            "sampleDataJsonFilePath": "./data/Documents.json",
             "dataRootPath": "$.data",
             "destinationTable": "ltbl_Import_DTS_DCS_Documents",
             "rawImportTable": "ltbl_Import_DTS_DCS_Documents_RAW",
             "entityName": "Documents"
         },
         {
-            "sampleDataJsonFilePath": "./data/DocRevisionsYggdrasil.json",
+            "sampleDataJsonFilePath": "./data/DocRevisions.json",
             "dataRootPath": "$.data",
             "destinationTable": "ltbl_Import_DTS_DCS_Revisions",
             "rawImportTable": "ltbl_Import_DTS_DCS_Revisions_RAW",
             "entityName": "Revisions"
         },
         {
-            "sampleDataJsonFilePath": "./data/DocRevFilesYggdrasil.json",
-            "dataRootPath": "$.data.objects",
+            "sampleDataJsonFilePath": "./data/DocRevFiles.json",
+            "dataRootPath": "$.data",
             "destinationTable": "ltbl_Import_DTS_DCS_RevisionsFiles",
             "rawImportTable": "ltbl_Import_DTS_DCS_RevisionsFiles_RAW",
             "entityName": "RevisionsFiles"

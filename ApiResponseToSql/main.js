@@ -1,10 +1,10 @@
 import fs from 'fs'
-import { getValueByJsonPath } from './src/GetValueByJsonPath.js'
-import { getColumnNames } from './src/GetColumnNames.js'
-import { getColumnTypes } from './src/GetColumnTypes.js'
-import { getJsonPaths } from './src/GetJsonPaths.js'
-import { generateTransformProcedure } from './src/GenerateTransformProcedure.js'
-import { generateAlignDataModelProcedure } from './src/GenerateAlignDataModelProcedure.js'
+import { getValueByJsonPath } from './lib/GetValueByJsonPath.js'
+import { getColumnNames } from './lib/GetColumnNames.js'
+import { getColumnTypes } from './lib/GetColumnTypes.js'
+import { getJsonPaths } from './lib/GetJsonPaths.js'
+import { generateTransformProcedure } from './lib/GenerateTransformProcedure.js'
+import { generateAlignDataModelProcedure } from './lib/GenerateAlignDataModelProcedure.js'
 
 const config = JSON.parse(fs.readFileSync('./config.json'))
 

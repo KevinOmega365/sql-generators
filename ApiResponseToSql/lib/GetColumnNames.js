@@ -1,6 +1,6 @@
 export const getColumnNames = (obj) => recurse(obj)
   .map(name => name.replace(/\_value/, ''))
-  .map(name => name.replace(/\_\_/, '_'))
+  .map(name => name.replace(/\_\_/g, '_'))
   .map(name => name.replace(/^\_/, ''))
 
 const recurse = (obj, currentName = '') => {
